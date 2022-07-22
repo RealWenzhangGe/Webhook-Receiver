@@ -122,7 +122,7 @@ function main() {
                 } else {
                     failure++;
                     loss += Math.abs(unrealizedProfit);
-                    Log('亏钱了，傻屄！亏了', Math.abs(unrealizedProfit), '个USDT');
+                    Log('亏钱了！亏了', Math.abs(unrealizedProfit), '个USDT');
                 }
                 Log('当前策略净值为', netWorth, 'USDT', '盈亏比为', profit / loss, '胜率为', winning / (winning + failure) * 100, "%" );
 
@@ -142,15 +142,11 @@ function main() {
                     netWorth += unrealizedProfit;
                     failure++;
                     loss += Math.abs(unrealizedProfit);
-                    Log('哈哈!',position[i].symbol,'打止损了傻屄！亏了', Math.abs(unrealizedProfit), '个USDT！');
-                    Log('当前策略净值为', netWorth, 'USDT', '盈亏比为', profit / loss, '胜率为', winning / (winning + failure) * 100, "%" );
                 } else if (position[i].positionAmt < 0 && latestPrice('1m', position[i].symbol) > position[i].entryPrice * 1.00927 && closeOrder(position[i].symbol, position[i].positionAmt)) {
                     let unrealizedProfit = position[i].unrealizedProfit;
                     netWorth += unrealizedProfit;
                     failure++;
                     loss += Math.abs(unrealizedProfit);
-                    Log('哈哈!',position[i].symbol,'打止损了傻屄！亏了', Math.abs(unrealizedProfit), '个USDT！');
-                    Log('当前策略净值为', netWorth, 'USDT', '盈亏比为', profit / loss, '胜率为', winning / (winning + failure) * 100, "%" );
                 }
             }
         } 
